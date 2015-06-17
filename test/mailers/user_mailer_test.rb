@@ -3,7 +3,7 @@ require 'test_helper'
 class UserMailerTest < ActionMailer::TestCase
 
   test "account_activation" do
-    default_from = ENV['DEFAULT_FROM'] || "noreply@example.com"
+    default_from = ENV['MAIL_FROM'] || "noreply@example.com"
     user = users(:michael)
     user.activation_token = User.new_token
     mail = UserMailer.account_activation(user)
@@ -16,7 +16,7 @@ class UserMailerTest < ActionMailer::TestCase
   end
 
   test "password_reset" do
-    default_from = ENV['DEFAULT_FROM'] || "noreply@example.com"
+    default_from = ENV['MAIL_FROM'] || "noreply@example.com"
     user = users(:michael)
     user.reset_token = User.new_token
     mail = UserMailer.password_reset(user)
